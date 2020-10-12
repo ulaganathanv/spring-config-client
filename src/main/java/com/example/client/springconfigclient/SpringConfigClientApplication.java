@@ -1,7 +1,9 @@
 package com.example.client.springconfigclient;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.env.Environment;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -12,20 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpringConfigClientApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(SpringConfigClientApplication.class, args);
 	}
 
-}
-
-@RefreshScope
-@RestController
-class MessageRestController {
-
-	@Value("${msg:Hello world - Config Server is not working..pelase check}")
-	private String msg;
-
-	@RequestMapping("/msg")
-	String getMsg() {
-		return this.msg;
-	}
+//	@Autowired
+//	public void setEnv(Environment e)
+//	{
+//		System.out.println(e.getProperty("msg"));
+//	}
 }
